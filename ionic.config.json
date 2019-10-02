@@ -1,0 +1,7 @@
+{
+  "name": "PlusSports",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
