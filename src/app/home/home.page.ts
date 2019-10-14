@@ -27,9 +27,12 @@ export class HomePage {
 
   abrirDetalles(item) {
     console.log(item.description);
-    let nombre = item.name;
 
-    this.router.navigate(['details'], item);
+    this.router.navigate(['details'], { state: { 
+    name: item.name,
+    description: item.description,
+    image: item.image,
+    id: item.id, }});
 
   }
 

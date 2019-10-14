@@ -8,17 +8,39 @@ import { Router } from '@angular/router';
 })
 export class DetailsPage implements OnInit {
 
-  @Input() item:any;
+  public item = {
+            name:"",
+            description:"",
+            image:"",
+            id:""
+          }
+
 
   constructor(private router: Router) {
 
-    this.route.queryParams.subscribe(params => {
-      if (params && params.special) {
-        this.item = JSON.parse(params.special);
-      }
+    this.item.name = this.router.getCurrentNavigation().extras.state.name;
+    this.item.description = this.router.getCurrentNavigation().extras.state.description;
+    this.item.image = this.router.getCurrentNavigation().extras.state.image;
+    this.item.id = this.router.getCurrentNavigation().extras.state.id;
+
+
    }
 
+   abrirDetalles(item) {
+    console.log(item.description);
+
+    this.router.navigate(['compra'], { state: { 
+    name: item.name,
+    description: item.description,
+    image: item.image,
+    id: item.id, }});
+
+  }
+
   ngOnInit() {
+
+  
+
   }
 
 }

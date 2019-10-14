@@ -1,88 +1,30 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>compra</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ item.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-item>
+    <ion-label>Cantidad</ion-label>
+    <ion-datetime
+      displayFormat="m"
+      minuteValues="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20"
+      value="1"
+    ></ion-datetime>
+  </ion-item>
 
-
-<ion-item>
-  <ion-label>Cantidad</ion-label>
-  <ion-picker-controller></ion-picker-controller>
-   <ion-button onclick="openPicker()">Seleccionar</ion-button>
-   </ion-item>
-
-<script>
-    const pickerController = document.querySelector('ion-picker-controller');
-    const defaultColumnOptions = [
-      [
-        '1',
-        '2',
-        '3',
-        '4',
-        '5',
-        '6',
-        '7',
-        '8',
-        '9',
-        '10'
-      ]
-    ]
-    const multiColumnOptions = [
-      [
-        'Minified',
-        'Responsive',
-        'Full Stack',
-        'Mobile First',
-        'Serverless'
-      ],
-      [
-        'Tomato',
-        'Avocado',
-        'Onion',
-        'Potato',
-        'Artichoke'
-      ]
-    ]
-    async function openPicker(numColumns = 1, numOptions = 5, columnOptions = defaultColumnOptions){
-      const picker = await pickerController.create({
-        columns: this.getColumns(numColumns, numOptions, columnOptions),
-        buttons: [
-          {
-            text: 'Cancel',
-            role: 'cancel'
-          },
-          {
-            text: 'Confirm',
-            handler: (value) => {
-              console.log(`Got Value ${value}`);
-            }
-          }
-        ]
-      });
-      await picker.present();
-    }
-    function getColumns(numColumns, numOptions, columnOptions) {
-      let columns = [];
-      for (let i = 0; i < numColumns; i++) {
-        columns.push({
-          name: `col-${i}`,
-          options: this.getColumnOptions(i, numOptions, columnOptions)
-        });
-      }
-      return columns;
-    }
-    function getColumnOptions(columnIndex, numOptions, columnOptions) {
-      let options = [];
-      for (let i = 0; i < numOptions; i++) {
-        options.push({
-          text: columnOptions[columnIndex][i % numOptions],
-          value: i
-        })
-      }
-      return options;
-    }
-  </script>
-
+  <ion-grid margin>
+    <ion-row align-items-center>
+      <ion-col align-self-center>
+        <img src="{{ item.image }}" height="100" />
+      </ion-col>
+      <ion-col align-self-center>
+        <ion-button color="success" (click)="presentAlert()">PAGAR</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

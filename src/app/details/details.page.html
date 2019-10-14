@@ -8,23 +8,17 @@
 </ion-header>
 
 <ion-content>
+  <h1>{{ item.name }}</h1>
 
-
-  <h1>{{ nombre }}</h1>
-
-  <img src="">
+  <img src="{{ item.image }}" />
 
   <ion-text>
-    <h1></h1>
+    <h1>{{ item.description }}</h1>
   </ion-text>
 
   <div>
+    <ion-button color="warning">Favoritos</ion-button>
 
-
-    <ion-button routerLink="/compra" >Comprar</ion-button>
-  
-    <ion-button >Favoritos</ion-button>
-  
-    
+    <ion-button (click)="abrirDetalles(item)">Comprar</ion-button>
   </div>
 </ion-content>
