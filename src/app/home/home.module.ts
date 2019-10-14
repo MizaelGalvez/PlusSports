@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 
 import { HomePage } from './home.page';
+import { DetailsPage } from '../details/details.page';
 
 @NgModule({
   imports: [

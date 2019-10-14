@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card class="welcome-card" *ngFor="let item of items">
+  <ion-card class="welcome-card" *ngFor="let item of items" (click)="abrirDetalles(item)">
     <img src="{{ item.image }}" alt="" />
     <ion-card-header>
       <ion-card-subtitle>{{ item.id }}</ion-card-subtitle>

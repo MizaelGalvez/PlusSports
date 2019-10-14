@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,8 @@ import { HttpClient } from '@angular/common/http';
 export class HomePage {
 
   public items:any;
-  constructor(public http: HttpClient) {
+
+  constructor( public http: HttpClient, private router: Router) {
 
     this.getData();
 
@@ -22,5 +24,14 @@ export class HomePage {
       this.items = result;
     });
   }
+
+  abrirDetalles(item) {
+    console.log(item.description);
+    let nombre = item.name;
+
+    this.router.navigate(['details'], item);
+
+  }
+
 
 }
